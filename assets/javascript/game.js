@@ -1,33 +1,32 @@
 
 //Create FIve questions within objects to be called by random number selector, denote correct answer within object to log correct vs incorrect ans
 var question = [
-    ans : [],
     {
-    ques : "What is the maximum allowable amount of alcohol per cocktail in Utah",
+    ques : "What is the maximum combined allowable amount of alcohol per cocktail in Utah",
     
-    ans : ["5 oz", "3.5 oz", "2.5 oz", "One metric s***ton"],
-    correctAns : ans[2]   
+    incorrectAns : ["5 oz", "3.5 oz", "One metric s***ton"],
+    correctAns : "2.5 oz"   
     
     }, {
     ques : "How old must you be to have an alcoholic beverage in Utah?",
-    ans : ["18 years old", "21 years old", "All you need is one hand and a mouth", "Two kids and a mortgage"],
-    correctAns : ans[1]
+    incorrectAns : ["18 years old", "All you need is one hand and a mouth", "Two kids and a mortgage"],
+    correctAns : "21 years old"
     }, 
     {
     ques : "Which cocktail was made famous by Earnest Hemmingway?",
-    ans : ["Hemmingway Daquiri", "Vodka Soda", "Motor Oil", "India Pale Ale"],
-    correctAns : ans[0]
+    incorrectAns : ["Vodka Soda", "Motor Oil", "India Pale Ale"],
+    correctAns : "Hemmingway Daquiri"
     
     }, 
     {
     ques : "At what point are you legally too intoxicated to operate a motor vehicle in Utah?",
-    ans : ["If you can dodge a wrench, you can dodge a car", "After three beverages", ".08 BAC", ".05 BAC"],
-    correctAns : ans[3]
+    incorrectAns : ["If you can dodge a wrench, you can dodge a car", "After three beverages", ".08 BAC"],
+    correctAns : ".05 BAC"
     }, 
     {
     ques : "What is the most consumed beer in Utah?",
-    ans : ["Budweiser", "Uinta Lime Pilsner", "PBR Tallboys", "Diet Coke"],
-    correctAns : ans[3]
+    incorrectAns : ["Budweiser", "Uinta Lime Pilsner", "PBR Tallboys", ],
+    correctAns : "Diet Coke"
     },
 ]
 //Variables Initializing correct and incorrect answers
@@ -44,6 +43,7 @@ function randomQuestion() {
     console.log(usedQuestions)
     return q
   }
+//On key press, the browser selects a random question object from the questions array then fills the information in the cooresponding 
 
 console.log(randomQuestion())  
 
