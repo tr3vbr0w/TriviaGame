@@ -3,7 +3,6 @@
 var question = [
     {
     ques : "What is the maximum combined allowable amount of alcohol per cocktail in Utah",
-    
     incorrectAns : ["5 oz", "3.5 oz", "One metric s***ton"],
     correctAns : "2.5 oz"   
     
@@ -25,28 +24,48 @@ var question = [
     }, 
     {
     ques : "What is the most consumed beer in Utah?",
-    incorrectAns : ["Budweiser", "Uinta Lime Pilsner", "PBR Tallboys", ],
+    incorrectAns : ["Budweiser", "Uinta Lime Pilsner", "PBR Tallboys"],
     correctAns : "Diet Coke"
     },
 ]
 //Variables Initializing correct and incorrect answers
-var unusedQuestion = [question[0], question[1], question[2], question[3], question[4]];
-var usedQuestion = [];
-// var correctAns = 0;
-var incorrectAns = 0;
+var unusedQuestions = [question[0], question[1], question[2], question[3], question[4]];
+var usedQuestions = [];
+var correct = 0;
+var incorrect = 0;
+var selected
 
 //Function to pull random question from unusedQuestion array, add it to the usedQuestion array, and save the correct answer within the question div
 function randomQuestion() {
     var q = Math.floor(Math.random() * Math.floor(question.length))
-    usedQuestions.splice(1, 0, question[q])
-    unusedQuestions.splice(question[q], 1)
-    console.log(usedQuestions)
-    return q
+    selected = question[q];
+    usedQuestions.splice(1, 0, selected);
+    unusedQuestions.splice(selected, 1);
+    return selected
   }
+
+
+function displayQuestion() {
+  var questionDiv = $('<div>').addClass('question-display');
+  $('#game').append(questionDiv);
+  $('<h1>').text(selected.ques).prependTo(questionDiv);
+
+
+  // $('<div>').addClass('answer-display');
+
+}
 //On key press, the browser selects a random question object from the questions array then fills the information in the cooresponding 
+$(document).on('click', '#start-game', function() {
+  $('#start-game').hide();
+  randomQuestion();
+  displayQuestion();
+  console.log(selected)
+ 
 
-console.log(randomQuestion())  
+
+})
 
 
 
-console.log(question1.correctAns);
+
+
