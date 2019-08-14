@@ -26,8 +26,10 @@ var question = [
     ques : "What is the most consumed beer in Utah?",
     incorrectAns : ["Budweiser", "Uinta Lime Pilsner", "PBR Tallboys"],
     correctAns : "Diet Coke"
+    //correctAns : incorrectAns[3]
     },
 ]
+// console.log(question[4].correctAns)
 //Variables Initializing correct and incorrect answers
 var unusedQuestions = [question[0], question[1], question[2], question[3], question[4]];
 var usedQuestions = [];
@@ -43,28 +45,49 @@ function randomQuestion() {
     unusedQuestions.splice(selected, 1);
     return selected
   }
-
+function randomizeAnswer(){
+  var q = Math.floor(Math.random() * Math.floor(selected.incorrectAns.length))
+  for (var i = 0; i < selected.incorrectAns.length; i++){
+    var ansDiv = $('<div>').addClass('answer-dump')
+    var randAns = $('<button>').text(selected.incorrectAns[q]).addClass('incorrect')
+    ansDiv.append(randAns)
+  }
+}
 
 function displayQuestion() {
   var questionDiv = $('<div>').addClass('question-display');
   $('#game').append(questionDiv);
   $('<h1>').text(selected.ques).prependTo(questionDiv);
-
+  randomizeAnswer();
 
   // $('<div>').addClass('answer-display');
-
 }
+
+
+
+
 //On key press, the browser selects a random question object from the questions array then fills the information in the cooresponding 
 $(document).on('click', '#start-game', function() {
   $('#start-game').hide();
   randomQuestion();
   displayQuestion();
-  console.log(selected)
- 
+  //Begin timeout function, which runs for 10 seconds then clears the question-display div, displaying time is up
+  setTimeout (function(){
+    $('.question-display').html("");
+    $('.question-display').append('<h1>').text('time is up. Click button for next question');
+    //#start-game button is not hiding here once created and clicked
+    $('.question-display').append($('<button>').text('nextquestion').attr('id', 'start-game'));
 
+  },1000) 
+  
 
+  
+
+  
+  
+  
 })
-
+console.log(usedQuestions)
 
 
 
