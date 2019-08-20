@@ -52,11 +52,12 @@ function randomQuestion() {
 
 
 function displayQuestion() {
-  var questionDiv = $('<div>');
+  var questionDiv = $('<div>').attr('id','question-div');
   $('#game').append(questionDiv);
   $('<h1>').text(selected.ques).prependTo(questionDiv);
   var ansDiv = $('<div>').addClass('ans-dump')
   $('#game').append(ansDiv);
+  //For loop creates a button for each 
   for (var i = -1; i < selected.ans.length + 1; i++){
     var a = Math.floor(Math.random() * Math.floor(selected.ans.length))
     console.log(selected.ans[a])
@@ -69,6 +70,14 @@ function displayQuestion() {
       last.attr('id', 'ans-btn');
     }  
     $('#ans-btn').on('click', function(){
+      $('#game').html('')
+      if (this === selected.correctAns){
+        var cor =$('<h1>').text('Good Job');
+        $('#game').append(cor);
+      } else {
+        var inc = $('<h1>').text('Wrong');
+        $('#game').append(inc);
+      }
   })
   $('.ans-dump').append(randAns)
   $('.ans-dump').append(last)
