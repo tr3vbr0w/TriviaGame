@@ -3,7 +3,7 @@
 var question = [
     {
     ques : "What is the maximum combined allowable amount of alcohol per cocktail in Utah",
-    ans : ["5 oz", "3.5 oz", "One metric s***ton"],
+    ans : ["5 oz", "3.5 oz", "One metric s***ton", "2.5 oz"],
     correctAns : "2.5 oz"   
     
     }, {
@@ -57,15 +57,21 @@ function displayQuestion() {
   $('<h1>').text(selected.ques).prependTo(questionDiv);
   var ansDiv = $('<div>').addClass('ans-dump')
   $('#game').append(ansDiv);
-  for (var i = 0; i < selected.ans.length; i++){
+  for (var i = -1; i < selected.ans.length + 1; i++){
     var a = Math.floor(Math.random() * Math.floor(selected.ans.length))
     console.log(selected.ans[a])
     var randAns = $('<button>').text(selected.ans[a])
+    selected.ans.splice(a, 1);
+    console.log(selected.ans);
     randAns.attr('id', 'ans-btn')
+    if (selected.ans.length === 1) {
+      var last = $('<button>').text(selected.ans[0]);
+      last.attr('id', 'ans-btn');
+    }  
     $('#ans-btn').on('click', function(){
-      console.log(this.text())
-    })
-    $('.ans-dump').append(randAns)
+  })
+  $('.ans-dump').append(randAns)
+  $('.ans-dump').append(last)
 
   }
 }
