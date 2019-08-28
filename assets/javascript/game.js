@@ -40,16 +40,36 @@ var selected
 //Function to pull random question from unusedQuestion array, add it to the usedQuestion array, and save the correct answer within the question div
 function randomQuestion() {
     var q = Math.floor(Math.random() * Math.floor(unusedQuestions.length))
-    console.log(unusedQuestions[q])
     selected = unusedQuestions[q];
     usedQuestions.splice(1, 0, selected);
     unusedQuestions.splice(selected, 1);
-    //This for loop will choose a random number and display it in a seperate div beneath the question
+    console.log('this is the unusedQuestions Array '+ usedQuestions[q])
   }
 
+  
+  
 //This function exists to randomize answers
-
-
+function btnClick (){
+    //Adds click handler for each button in the ans-dump div
+    var btns = $('#ans-btn')
+    for (let i = 0; i < btns.length; i++) {
+      const btn = btns[i];
+      $('#ans-btn').on('click', function(){
+        $('#game').html('');
+     //This if statement checks to see if the clicked button is equal to the correct answer, then 
+        console.log('this is the button i am trying to add a click event to(theoretically) '+ this)
+        if ($('#ans-btn') === selected.correctAns){
+            var cor =$('<h1>').text('Good Job');
+            $('#game').append(cor);
+          } else {
+              var inc = $('<h1>').text('Wrong');
+              $('#game').append(inc);
+          }
+      })
+      
+    } 
+       
+}
 function displayQuestion() {
   var questionDiv = $('<div>').attr('id','question-div');
   $('#game').append(questionDiv);
@@ -67,27 +87,15 @@ function displayQuestion() {
     if (selected.ans.length === 1) {
       var last = $('<button>').text(selected.ans[0]);
       last.attr('id', 'ans-btn');
-    }  
-  //Adds click handler for each button in the ans-dump div
-    $('#ans-btn').on('click', function(){
-      $('#game').html('');
-   //This if statement checks to see if the clicked button is equal to the correct answer, then 
-      console.log(this)
-      if ($('#ans-btn') === selected.correctAns){
-          var cor =$('<h1>').text('Good Job');
-          $('#game').append(cor);
-        } else {
-            var inc = $('<h1>').text('Wrong');
-            $('#game').append(inc);
-          }
-        })
-        
+    } 
+  btnClick(); 
+ 
   $('.ans-dump').append(randAns)
   $('.ans-dump').append(last)
-  // console.log('Used array ' + usedQuestions)
-  // console.log('Unused array ' + unusedQuestions)
+
   }
 }
+
 
 
 
@@ -106,6 +114,7 @@ function displayQuestion() {
     $('.question-display').html('');
     randomQuestion();
     displayQuestion();
+    btnClick();
   });
 
 
