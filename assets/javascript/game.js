@@ -26,10 +26,9 @@ var question = [
     ques : "What is the most consumed beer in Utah?",
     ans : ["Budweiser", "Uinta Lime Pilsner", "PBR Tallboys", "Diet Coke"],
     correctAns : "Diet Coke"
-    // correctAns : ans[3]
     },
 ]
-// console.log(question[4].correctAns)
+
 
 //Variables Initializing correct and incorrect answers
 var unusedQuestions = [question[0], question[1], question[2], question[3], question[4]];
@@ -59,29 +58,34 @@ function displayQuestion() {
   $('#game').append(ansDiv);
   //For loop creates a button for each 
   for (var i = -1; i < selected.ans.length + 1; i++){
+    //This line of code selects a random answer from the ans array within the selected question
     var a = Math.floor(Math.random() * Math.floor(selected.ans.length))
-    console.log(selected.ans[a])
+    //This line of code creates a button with text for each answer within the 
     var randAns = $('<button>').text(selected.ans[a])
     selected.ans.splice(a, 1);
-    console.log(selected.ans);
     randAns.attr('id', 'ans-btn')
     if (selected.ans.length === 1) {
       var last = $('<button>').text(selected.ans[0]);
       last.attr('id', 'ans-btn');
     }  
+  //Adds click handler for each button in the ans-dump div
     $('#ans-btn').on('click', function(){
-      $('#game').html('')
-      if (this === selected.correctAns){
-        var cor =$('<h1>').text('Good Job');
-        $('#game').append(cor);
-      } else {
-        var inc = $('<h1>').text('Wrong');
-        $('#game').append(inc);
-      }
-  })
+      $('#game').html('');
+   //This if statement checks to see if the clicked button is equal to the correct answer, then 
+      console.log(this)
+      if ($('#ans-btn') === selected.correctAns){
+          var cor =$('<h1>').text('Good Job');
+          $('#game').append(cor);
+        } else {
+            var inc = $('<h1>').text('Wrong');
+            $('#game').append(inc);
+          }
+        })
+        
   $('.ans-dump').append(randAns)
   $('.ans-dump').append(last)
-
+  // console.log('Used array ' + usedQuestions)
+  // console.log('Unused array ' + unusedQuestions)
   }
 }
 
