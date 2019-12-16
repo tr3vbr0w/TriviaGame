@@ -1,35 +1,132 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Liquor Trivia</title>
-  </head>
-  <body>
-    <div class="container">
-        <div class="jumbotron">
-            <h1 class="display-4">Trivia Game</h1>
-            <p class="lead">Welcome to Liquor Trivia! All things drank and drunk are fair game.</p>
-            <hr class="my-4">
-            <p></p>
-            <a id="start-game" class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-          </div>
-        <div id="game">
-          
-      
+    <!-- Need CSS link -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Fonts go here -->
+    <link href="https://fonts.googleapis.com/css?family=Courgette|Lobster|Permanent+Marker|Share+Tech+Mono&display=swap" rel="stylesheet">
+
+    <!-- Need JQUERY link -->
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div id="container">
+        <h1>Liquor Trivia</h1>
+        <div id="info">
+            <h3>All Things Drank and Drunk are Fair Game.
+            </h3>
+        </div>
+        <br>
+        <p id="time-remaining">Time Remaining: <span id="time-slot">10</span></p>
+        <br>
+        <button id="start-btn">Start!</button>
+        <div id="question-1" class="questions hide">
+            <!-- Trivia question goes here -->
+            <h3>What is the maximum combined allowable amount of alcohol per cocktail in Utah
+            </h3>
+            <!-- Answers go here -->
+            <ol>
+                <li class="incorrect-answer">5 oz</li>
+                <li class="incorrect-answer">3.5 oz</li>
+                <li class="correct-answer">2.5 oz</li>
+                <li class="incorrect-answer">One metric s***ton</li>
+            </ol>
+        </div>
+        <div id="question-2" class="questions hide">
+            <!-- Trivia question goes here -->
+            <h3>How old must you be to have an alcoholic beverage in Utah?
+            </h3>
+            <!-- Answers go here -->
+            <ol>
+              <li class="correct-answer">21 years old</li>
+                <li class="incorrect-answer">35 years old</li>
+                <li class="incorrect-answer">18 years old</li>
+                <li class="incorrect-answer">Two kids and a mortgage</li>
+            </ol>
+        </div>
+        <div id="question-3" class="questions hide">
+            <!-- Trivia question goes here -->
+            <h3>Which cocktail was made famous by Earnest Hemmingway?
+            </h3>
+            <!-- Answers go here -->
+            <ol>
+              <li class="incorrect-answer">Vodka Soda</li>
+              <li class="incorrect-answer">Motor Oil</li>
+              <li class="incorrect-answer" >India Pale Ale</li>
+              <li class="correct-answer">Hemmingway Daquiri</li>
+            </ol>
+        </div>
+        <div id="question-4" class="questions hide">
+            <!-- Trivia question goes here -->
+            <h3>What is the most consumed beer in Utah?
+            </h3>
+            <!-- Answers go here -->
+            <ol>
+              <li class="correct-answer">Uinta Lime Pilsner</li>
+                <li class="incorrect-answer">Budweiser</li>
+                <li class="incorrect-answer">PBR Tallboys</li>
+                <li class="incorrect-answer">Diet Coke</li>
+            </ol>
+        </div>
+        <div id="question-5" class="questions hide">
+            <!-- Trivia question goes here -->
+            <h3>At what point are you legally too intoxicated to operate a motor vehicle in Utah?
+            </h3>
+            <!-- Answers go here -->
+            <ol>
+              <li class="incorrect-answer">After three beverages</li>
+              <li class="incorrect-answer">.08 BAC</li>
+              <li class="correct-answer">.05 BAC</li>
+                <li class="incorrect-answer">If you can dodge a wrench, you can dodge a car</li>
+            </ol>
+        </div>
+        <div id="question-6" class="questions hide">
+            <!-- Trivia question goes here -->
+            <h3>Which national whiskey brand was founded in Park City, UT?
+            </h3>
+            <!-- Answers go here -->
+            <ol>
+                <li class="incorrect-answer">Jack Daniels</li>
+                <li class="correct-answer">High West</li>
+                <li class="incorrect-answer">Jameson</li>
+                <li class="incorrect-answer">Laphroaig</li>
+            </ol>
+        </div>
+        <div id="question-7" class="questions hide">
+            <!-- Trivia question goes here -->
+            <h3>What is the maximum allowable ABV for a beer sold in a grocery store in Utah?
+            </h3>
+            <!-- Answers go here -->
+            <ol>
+              <li class="incorrect-answer">4.0%</li>
+              <li class="incorrect-answer">5.0%</li>
+              <li class="correct-answer">3.2%</li>
+                <li class="incorrect-answer">12.0%</li>
+            </ol>
+        </div>
+        <div class="game-over hide">
+            <h3>Game over! Are you a lush?</h3>
+            <h2>Correct answers: <span id="correct-end"></span></h2>
+            <h2>Wrong answers: <span id="incorrect-end"></span></h2>
+            <h2>Unanswered questions: <span id="unanswered-end"></span></h2>
+            <h4>Cheers</h4>
+            <button id="reset-btn">Retry</button>
         </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src = "assets/javascript/game.js"></script>
-  </body>
+    </div>
+    <!--  -->
+
+
+
+    <script src="./assets/javascript/app.js">
+    </script>
+</body>
 </html>

@@ -1,0 +1,90 @@
+body {
+    background-image: url('../images/backbar.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Helvetica', sans-serif;
+}
+
+h1 {
+    font-family: 'Verdana', cursive;
+    font-size: 7em;
+    padding-top: 15px;
+    text-align: center;
+}
+
+h3 {
+    font-family: 'Verdana', cursive;
+    font-size: 2em;
+}
+
+ol {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.5em;
+}
+
+#container {
+    background-color: #013A01;
+    opacity: .9;
+    box-shadow: 2px 6px 25px 5px rgba(0,0,0,0.75);
+    color: white;
+    padding: 0 35px 30px 35px;
+    width: 75%;
+    margin: auto;
+}
+
+#time-remaining {
+    font-family: 'Lucidia Console', monospace;
+    text-align: center;
+    font-size: 2em;
+}
+
+.hide {
+    display: none;
+}
+
+.correct-answer-display {
+    color: green;
+    font-size: 2em;
+}
+
+.incorrect-answer-display {
+    color: red;
+}
+
+#start-btn {
+    font-size: 1.5em;
+    font-family: 'Verdana', cursive;
+    padding: 15px;
+}
+
+li:hover {
+    font-size: 1.5em;
+}
+
+#correct-end {
+    color: green;
+}
+
+#incorrect-end {
+    color: red;
+}
+
+#unanswered-end {
+    color: red;
+}
+
+#reset-btn {
+    font-size: 1.5em;
+    font-family: 'Georgia', serif;
+    padding: 15px;
+}
+
+h2 {
+    font-family: 'Lucida Console', monospace;
+    font-size: 2em; 
+}
+
+h4 {
+    text-align: center;
+    font-size: 3em;
+}
