@@ -13,12 +13,12 @@ h1 {
 }
 
 h3 {
-    font-family: 'Verdana', cursive;
+    font-family: 'Bookman', serif;
     font-size: 2em;
 }
 
 ol {
-    font-family: 'Permanent Marker', cursive;
+    font-family: '', cursive;
     font-size: 1.5em;
 }
 
@@ -55,10 +55,6 @@ ol {
     font-size: 1.5em;
     font-family: 'Verdana', cursive;
     padding: 15px;
-}
-
-li:hover {
-    font-size: 1.5em;
 }
 
 #correct-end {
